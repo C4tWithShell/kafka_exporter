@@ -1,4 +1,4 @@
-module github.com/danielqsj/kafka_exporter
+module github.com/c4twithshell/kafka_exporter
 
 go 1.24
 

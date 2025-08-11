@@ -1,11 +1,15 @@
-FROM        quay.io/prometheus/busybox:latest
-MAINTAINER  Daniel Qian <qsj.daniel@gmail.com>
+FROM golang:1.24.4-alpine3.21 AS build
+WORKDIR /application
+COPY . ./
 
-ARG TARGETARCH
-ARG BIN_DIR=.build/linux-${TARGETARCH}/
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build -gcflags=all=-d=checkptr -ldflags="-w -s -X 'main.version=v1.0.0'" -trimpath \
+    -o / ./...
 
-COPY ${BIN_DIR}/kafka_exporter /bin/kafka_exporter
+FROM scratch
 
-EXPOSE     9308
-USER nobody
-ENTRYPOINT [ "/bin/kafka_exporter" ]
+USER 65534:65534
+EXPOSE 9308
+
+ENTRYPOINT [ "/kafka-exporter" ]
+COPY --from=build ./kafka-exporter /
