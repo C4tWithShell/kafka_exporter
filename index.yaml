@@ -6,11 +6,11 @@ entries:
     created: "2025-08-11T13:35:06.171428+03:00"
     description: A Helm chart for Kubernetes
     digest: 145b991569de85b4d344a2d512f3cce19b7610851c67060c1f60b6fdb1416627
-    home: https://github.com/c4twithshell/kafka-exporter
+    home: https://github.com/c4twithshell/kafka_exporter
     maintainers:
     - name: c4twithshell
     name: kafka-exporter
     urls:
-    - https://c4twithshell.github.io/kafka-exporter/kafka-exporter-1.2.1.tgz
+    - https://c4twithshell.github.io/kafka_exporter/kafka-exporter-1.2.1.tgz
     version: 1.2.1
 generated: "2025-08-11T13:35:06.156313+03:00"
